@@ -5,7 +5,7 @@ import os
 
 ##############################################################
 #
-# Ask questions to prepare cloud-init file for mini pupper with Stanford controller and ROS2
+# Ask questions to prepare cloud-init file for mini pupper with mini_pupper_ros_bsp
 #
 # if ~/.mp_ros2_sd.txt exists no questions will be asked
 #
@@ -104,8 +104,8 @@ chpasswd:
 packages:
 - git
 runcmd:
-- [ su, ubuntu, -c, "git clone -b mini_pupper_ros2 https://github.com/hdumcke/StanfordQuadruped.git /home/ubuntu/StanfordQuadruped" ]
-- [ su, ubuntu, -c, "/home/ubuntu/StanfordQuadruped/%s %s 2> /home/ubuntu/.setup_err.log > /home/ubuntu/.setup_out.log" ]
+- [ su, ubuntu, -c, "git clone -b for_review https://github.com/hdumcke/mini_pupper_ros_bsp.git /home/ubuntu/mini_pupper_ros_bsp" ]
+- [ su, ubuntu, -c, "/home/ubuntu/mini_pupper_ros_bsp/%s %s 2> /home/ubuntu/.setup_err.log > /home/ubuntu/.setup_out.log" ]
 - [ reboot ]
 """
 
