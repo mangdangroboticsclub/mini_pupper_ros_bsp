@@ -1,18 +1,4 @@
 #!/bin/bash
-######################################################################################
-# Stanford
-#
-# This stack will consist of board support package (mini_pupper_bsp),
-#    the StanfordQuadruped controller and the mini_pupper_web_controller
-#
-# After installation you can either pair a supported PS4 joystick or
-# point your web browser to 
-#   http://x.x.x.x:8080
-# where x.x.x.x is the IP address of your Mini Pupper as displayed on the LCD screen
-#
-# To install
-#    ./setup.sh <SSID> "<your Wifi password>"
-######################################################################################
 
 set -e
 echo "setup.sh started at $(date)"
@@ -35,7 +21,20 @@ cd ~
 [[ "$1" == "v2" ]] && git clone https://github.com/mangdangroboticsclub/mini_pupper_2_bsp.git mini_pupper_bsp
 #TODO Change URL after testing
 [[ -d ~/mini_pupper_ros_bsp ]] || git -b for_review https://github.com/hdumcke/mini_pupper_ros_bsp.git
-~/mini_pupper_bsp/install.sh
+
+# Install Mini Pupper BSP
+MACHINE=$(uname -m)
+if [ "$MACHINE" == "x86_64" ]
+then
+    # We are installing in a virtual machine
+    sudo apt-get update
+    sudo apt-get -y install python3 python3-pip python-is-python3 python3-venv python3-virtualenv
+    sudo PBR_VERSION=$(cd ~/mini_pupper_bsp; ./get-version.sh) pip install ~/mini_pupper_bsp/mock_api
+else
+    ~/mini_pupper_bsp/install.sh
+fi
+
+# Install Mini Pupper ROS BSP
 ~/mini_pupper_ros_bsp/install.sh
 
 echo "setup.sh finished at $(date)"
