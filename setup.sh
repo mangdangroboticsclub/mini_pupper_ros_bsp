@@ -29,8 +29,12 @@ then
     # We are installing in a virtual machine
     sudo apt-get update
     sudo apt-get -y install python3 python3-pip python-is-python3 python3-venv python3-virtualenv
-    sudo PBR_VERSION=$(cd ~/mini_pupper_bsp; ./get-version.sh) pip install ~/mini_pupper_bsp/mock_api
+    #TODO re-enable version
+    #sudo PBR_VERSION=$(cd ~/mini_pupper_bsp; ./get-version.sh) pip install ~/mini_pupper_bsp/mock_api
+    sudo DUMMY=$(cd ~/mini_pupper_bsp; ./get-version.sh) pip install ~/mini_pupper_bsp/mock_api
 else
+    #TODO re-enable version
+    sed -i "s/PBR_VERSION/DUMMY/" ~/mini_pupper_bsp/install.sh
     ~/mini_pupper_bsp/install.sh
 fi
 
