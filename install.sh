@@ -21,7 +21,9 @@ git clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git
 source /opt/ros/humble/setup.bash
 mkdir -p ~/mini_pupper_ws/src
 cd ~/mini_pupper_ws/src
-git clone https://github.com/mangdangroboticsclub/mini_pupper_ros_bsp
+#TODO change URL after testing
+#git clone https://github.com/mangdangroboticsclub/mini_pupper_ros_bsp,git
+git clone -b for_review https://github.com/hdumcke/mini_pupper_ros_bsp.git
 
 cd ~/mini_pupper_ws
 rosdep update && rosdep install --from-path src --ignore-src -y --skip-keys microxrcedds_agent --skip-keys micro_ros_agent

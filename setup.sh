@@ -39,7 +39,7 @@ else
 fi
 
 # Install Mini Pupper ROS BSP
-~/mini_pupper_ros_bsp/install.sh
+~/mini_pupper_ros_bsp/install.sh $1
 
 echo "setup.sh finished at $(date)"
 sudo reboot
