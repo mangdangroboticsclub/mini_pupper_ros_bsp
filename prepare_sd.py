@@ -7,7 +7,7 @@ import os
 #
 # Ask questions to prepare cloud-init file for mini pupper with mini_pupper_ros_bsp
 #
-# if ~/.mp_ros2_sd.txt exists no questions will be asked
+# if ~/.mp_ros_bsp_sd.txt exists no questions will be asked
 #
 ##############################################################
 
@@ -51,7 +51,7 @@ parser.add_argument('-c', '--cache',
                     help='Cache my responses')
 args = parser.parse_args()
 
-conf_file = os.path.join(os.path.expanduser("~"), '.mp_ros2_sd.txt')
+conf_file = os.path.join(os.path.expanduser("~"), '.mp_ros_bsp_sd.txt')
 if os.path.exists(conf_file):
     with open(conf_file, 'r') as fh:
         lines = fh.readlines()
