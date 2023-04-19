@@ -1,7 +1,7 @@
 [Unit]
 Description=Joystick restart service
-Requires=robot-ros.service
-After=robot-ros.service
+Requires=joy_node.service
+After=joy_node.service
 
 [Service]
 Type=forking

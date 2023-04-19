@@ -1,0 +1,11 @@
+[Unit]
+Description=Joystick ROS Node
+Requires=joystick.service
+After=joystick.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/bash /home/ubuntu/mini_pupper_ros_bsp/services/joy_node.sh
+
+[Install]
+WantedBy=multi-user.target

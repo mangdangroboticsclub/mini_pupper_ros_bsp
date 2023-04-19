@@ -30,13 +30,18 @@ rosdep update && rosdep install --from-path src --ignore-src -y --skip-keys micr
 sudo pip install setuptools==58.2.0 # suppress colcon build warning
 colcon build --executor sequential --symlink-install
 
-# Install mini_pupper_driver
+# Install servo_interface
 cd ~/mini_pupper_ros_bsp/services
-sudo ln -s $(realpath .)/mini_pupper_driver.service /etc/systemd/system/
+sudo ln -s $(realpath .)/servo_interface.service /etc/systemd/system/
+
+# Install display_interface
+cd ~/mini_pupper_ros_bsp/services
+sudo ln -s $(realpath .)/display_interface.service /etc/systemd/system/
 
 # Install Joystick
 cd ~/mini_pupper_ros_bsp/services
 sudo ln -s $(realpath .)/joystick.service /etc/systemd/system/
+sudo ln -s $(realpath .)/joy_node.service /etc/systemd/system/
 sudo ln -s $(realpath .)/restart_joy.service /etc/systemd/system/
 
 # Install Lidar
@@ -74,8 +79,10 @@ echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc
 
 # enable services
 sudo systemctl daemon-reload
-sudo systemctl enable mini_pupper_driver
+sudo systemctl enable servo_interface
+sudo systemctl enable display_interface
 sudo systemctl enable joystick
+sudo systemctl enable joy_node
 sudo systemctl enable restart_joy
 sudo systemctl enable lidar
 sudo systemctl enable imu
