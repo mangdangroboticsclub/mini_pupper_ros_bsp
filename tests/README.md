@@ -6,10 +6,10 @@ To test if all services are running issue the following connads:
 
 ```sh
 sudo systemctl status imu
-sudo systemctl status joystick
+sudo systemctl status joy_node
 sudo systemctl status lidar
-sudo systemctl status mini_pupper_driver
-sudo systemctl status restart_joy
+sudo systemctl status servo_interface
+sudo systemctl status display_interface
 sudo systemctl status v4l2_camera
 ```
 
@@ -21,12 +21,44 @@ check that the ROS nodes are running:
 ros2 node list
 ```
 
+You should see the followig list:
+
+```sh
+/base_link_to_base_laser_ld06
+/base_link_to_imu
+/imu_complementary_filter
+/joy_node
+/mini_pupper_imu_node
+/servo_interface
+/v4l2_camera
+```
+
 ## Test ROS Topics
 
 check that the ROS topics are available:
 
 ```sh
 ros2 topic list
+```
+
+You should see the followig list:
+
+```sh
+/camera_info
+/image_raw
+/image_raw/compressed
+/image_raw/compressedDepth
+/image_raw/theora
+/imu/data
+/imu/data_raw
+/joint_group_effort_controller/joint_trajectory
+/joy
+/joy/set_feedback
+/mini_pupper_lcd/image_raw
+/parameter_events
+/rosout
+/tf
+/tf_static
 ```
 
 ## Echo ROS Topics that are Produces
@@ -39,18 +71,20 @@ ros2 topic echo <topic name>
 
 ## Test Joystick
 
-To test the joystick driver:
+To test the joystick driver connect with your joystick and issue:
 
 ```sh
-
+ros2 topic echo /joy
 ```
+
+You should see joystick actions in the ROS topic
 
 ## Move Servos
 
 To test the servo driver:
 
 ```sh
-
+TODO
 ```
 
 ## Test LCD
@@ -58,7 +92,7 @@ To test the servo driver:
 To test the display driver:
 
 ```sh
-
+TODO
 ```
 
 ## Test Video Stream
