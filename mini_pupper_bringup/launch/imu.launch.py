@@ -13,9 +13,9 @@ def generate_launch_description():
 
     config_dir = os.path.join(get_package_share_directory('mini_pupper_bringup'), 'config')
 
-    imu = Node(package='mini_pupper_imu',
-               executable='mini_pupper_imu',
-               name='mini_pupper_imu_node')
+    imu = Node(package='mini_pupper_imu_driver',
+               executable='mini_pupper_imu_driver',
+               name='mini_pupper_imu_driver_node')
     # base_link to imu tf node
     imu_tf = Node(package='tf2_ros',
                   executable='static_transform_publisher',
