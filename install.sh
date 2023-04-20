@@ -19,12 +19,12 @@ git clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git
 ./ros2_setup_scripts_ubuntu/run.sh
 
 source /opt/ros/humble/setup.bash
-mkdir -p ~/mini_pupper_ws/src
-cd ~/mini_pupper_ws/src
+mkdir -p ~/ros_ws/src
+cd ~/ros_ws/src
 #TODO change URL after testing
 [[ -d ~/mini_pupper_ros_bsp ]] || git clone https://github.com/mangdangroboticsclub/mini_pupper_ros_bsp,git
 
-cd ~/mini_pupper_ws
+cd ~/ros_ws
 rosdep update && rosdep install --from-path src --ignore-src -y --skip-keys microxrcedds_agent --skip-keys micro_ros_agent
 sudo pip install setuptools==58.2.0 # suppress colcon build warning
 colcon build --executor sequential --symlink-install
@@ -45,8 +45,8 @@ sudo ln -s $(realpath .)/restart_joy.service /etc/systemd/system/
 
 # Install Lidar
 source /opt/ros/humble/setup.bash
-mkdir -p ~/lidar_ws/src
-cd ~/lidar_ws
+mkdir -p ~/ros_ws/src
+cd ~/ros_ws
 git clone https://github.com/ldrobotSensorTeam/ldlidar_stl_ros2.git src/ldlidar
 colcon build
 cd ~/mini_pupper_ros_bsp/services

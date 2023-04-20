@@ -40,6 +40,9 @@ By default the ROS_DOMAIN_ID is set to 0
 
 To change the domain ID edit /home/ubuntu/mini_pupper_ros_bsp/services/ROS_DOMAIN_ID and reboot Mini Pupper
 
+The content of /home/ubuntu/mini_pupper_ros_bsp/services/ROS_DOMAIN_ID is used in the startup scripts of the services to the the environment
+variable ROS_DOMAIN_ID before starting the ROS node
+
 ## ROS DDS
 
 Mini Pupper uses Cyclone-DDS
