@@ -22,7 +22,7 @@ source /opt/ros/humble/setup.bash
 mkdir -p ~/ros_ws/src
 cd ~/ros_ws/src
 #TODO change URL after testing
-[[ -d ~/mini_pupper_ros_bsp ]] || git clone https://github.com/mangdangroboticsclub/mini_pupper_ros_bsp,git
+git -b for_review https://github.com/hdumcke/mini_pupper_ros_bsp.git
 
 cd ~/ros_ws
 rosdep update && rosdep install --from-path src --ignore-src -y --skip-keys microxrcedds_agent --skip-keys micro_ros_agent
