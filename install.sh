@@ -61,20 +61,20 @@ sudo apt install -y ros-humble-imu-tools
 fi
 
 # Install Camera
+sudo adduser ubuntu input
+sudo pip install ds4drv
 MACHINE=$(uname -m)
 if [ "$MACHINE" != "x86_64" ]
 # install script will break virtual installation
 then
-sudo adduser ubuntu input
-sudo pip install ds4drv
 ~/mini_pupper_bsp/RPiCamera/install.sh
+fi
 cd ~/mini_pupper_ros_bsp/services
 sudo ln -s $(realpath .)/v4l2_camera.service /etc/systemd/system/
 sudo apt install -y ros-humble-v4l2-camera ros-humble-image-transport-plugins
 mkdir -p ~/.ros/camera_info/
 # copy defaultcamera calibration file. This should be replaced by a camera spefici calibration file
 cp $BASEDIR/services/mmal_service_16.1.yaml ~/.ros/camera_info/
-fi
 
 
 # Cyclon DDS
