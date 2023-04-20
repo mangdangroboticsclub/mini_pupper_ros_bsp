@@ -37,6 +37,10 @@ sudo ln -s $(realpath .)/servo_interface.service /etc/systemd/system/
 # Install display_interface
 cd ~/mini_pupper_ros_bsp/services
 sudo ln -s $(realpath .)/display_interface.service /etc/systemd/system/
+sudo mkdir -p /var/lib/minipupper
+sudo cp show_ip.py /var/lib/minipupper
+sudo cp show_ip.sh /var/lib/minipupper
+sudo ln -s $(realpath .)/show_ip.service /etc/systemd/system/
 
 # Install Joystick
 cd ~/mini_pupper_ros_bsp/services
@@ -80,6 +84,7 @@ echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc
 # enable services
 sudo systemctl daemon-reload
 sudo systemctl enable servo_interface
+sudo systemctl enable show_ip
 sudo systemctl enable display_interface
 sudo systemctl enable joystick
 sudo systemctl enable joy_node
