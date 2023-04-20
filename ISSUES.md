@@ -26,11 +26,7 @@ Automatic discovery???
 
 ## Display driver
 
-Current display driver is broken and terminaates with Python error
-
-Display driver must not bypass MangDang.mini_pupper.display, we have to investigate if the Python API requires additinal capabilities like passing im memery iages
-
-Need test scripts
+Display driver now working, test node needs some more work
 
 ## Servo driver
 

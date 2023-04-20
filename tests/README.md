@@ -84,16 +84,26 @@ You should see joystick actions in the ROS topic
 To test the servo driver:
 
 ```sh
-TODO
+cd ~/mini_pupper_ros_bsp/tests/test_ws
+colcon build --symlink-install
+source install/setup.bash
+ros2 run test_api test_servos
 ```
+
+TODO
 
 ## Test LCD
 
 To test the display driver:
 
 ```sh
-TODO
+cd ~/mini_pupper_ros_bsp/tests/test_ws
+colcon build --symlink-install
+source install/setup.bash
+ros2 run test_api test_display
 ```
+
+The LCD display should show a dog.
 
 ## Test Video Stream
 
