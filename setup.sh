@@ -17,8 +17,11 @@ then
 fi
 
 cd ~
+if [ ! -d ~/mini_pupper_ros_bsp ]
+then
 [[ "$1" == "v1" ]] && git clone https://github.com/mangdangroboticsclub/mini_pupper_bsp.git mini_pupper_bsp
 [[ "$1" == "v2" ]] && git clone https://github.com/mangdangroboticsclub/mini_pupper_2_bsp.git mini_pupper_bsp
+fi
 #TODO Change URL after testing
 [[ -d ~/mini_pupper_ros_bsp ]] || git -b for_review https://github.com/hdumcke/mini_pupper_ros_bsp.git
 
