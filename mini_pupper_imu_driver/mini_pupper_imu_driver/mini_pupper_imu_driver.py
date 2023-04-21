@@ -9,7 +9,7 @@ from sensor_msgs.msg import Imu
 class IMU(Node):
 
     def __init__(self):
-        super().__init__('mini_pupper_imu')
+        super().__init__('mini_pupper_imu_driver')
         self.publisher = self.create_publisher(Imu, 'imu/data_raw', 10)
         self.esp32 = ESP32Interface()
         self.gyro_x_offset = 0.0  # [rad/s]

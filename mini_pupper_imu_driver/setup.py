@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'mini_pupper_imu'
+package_name = 'mini_pupper_imu_driver'
 
 setup(
     name=package_name,
@@ -22,7 +22,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'mini_pupper_imu = mini_pupper_imu.mini_pupper_imu:main'
+            'mini_pupper_imu_driver = mini_pupper_imu_driver.mini_pupper_imu_driver:main'
         ],
     },
 )
