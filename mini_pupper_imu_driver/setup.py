@@ -13,10 +13,12 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='ubuntu',
-    maintainer_email='ubuntu@todo.todo',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    author='MangDang',
+    author_email='fae@mangdang.net',
+    maintainer='MangDang',
+    maintainer_email='fae@mangdang.net',
+    description='The Mini Pupper IMU driver package',
+    license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [

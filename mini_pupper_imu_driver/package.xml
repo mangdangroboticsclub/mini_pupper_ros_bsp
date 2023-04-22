@@ -3,10 +3,12 @@
 <package format="3">
   <name>mini_pupper_imu_driver</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="ubuntu@todo.todo">ubuntu</maintainer>
-  <license>TODO: License declaration</license>
+  <description>The Mini Pupper IMU driver package</description>
+  <maintainer email="fae@mangdang.net">MangDang</maintainer>
+  <license>Apache-2.0</license>
 
+  <depend>sensor_msgs</depend>
+  <depend>rclpy</depend>
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
