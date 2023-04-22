@@ -28,7 +28,7 @@ You should see the followig list:
 /base_link_to_imu
 /imu_complementary_filter
 /joy_node
-/mini_pupper_imu_node
+/mini_pupper_imu_driver_node
 /servo_interface
 /v4l2_camera
 ```

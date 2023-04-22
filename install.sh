@@ -38,6 +38,9 @@ cd ~/mini_pupper_ros_bsp/services
 sudo ln -s $(realpath .)/display_interface.service /etc/systemd/system/
 
 # Install Joystick
+sudo adduser ubuntu input
+sudo pip install ds4drv
+sudo wget https://raw.githubusercontent.com/chrippa/ds4drv/master/udev/50-ds4drv.rules -O /etc/udev/rules.d/50-ds4drv.rules
 cd ~/mini_pupper_ros_bsp/services
 sudo ln -s $(realpath .)/joystick.service /etc/systemd/system/
 sudo ln -s $(realpath .)/joy_node.service /etc/systemd/system/
@@ -61,8 +64,6 @@ sudo apt install -y ros-humble-imu-tools
 fi
 
 # Install Camera
-sudo adduser ubuntu input
-sudo pip install ds4drv
 MACHINE=$(uname -m)
 if [ "$MACHINE" != "x86_64" ]
 # install script will break virtual installation
