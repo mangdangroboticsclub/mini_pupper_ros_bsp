@@ -1,0 +1,13 @@
+[Unit]
+Description=Joy node service
+Requires=joystick.service
+After=joystick.service
+
+[Service]
+User=ubuntu
+ExecStart=/bin/bash --login -c 'source /home/ubuntu/.bashrc; /home/ubuntu/mini_pupper_ros_bsp/services/joy_node.sh'
+KillSignal=2
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
