@@ -39,10 +39,6 @@ else
     #TODO re-enable version
     sed -i "s/PBR_VERSION/DUMMY/" ~/mini_pupper_bsp/install.sh
     ~/mini_pupper_bsp/install.sh
-    #TODO remove after PR is merged
-    cd /tmp
-    git clone https://github.com/James19891004/mini_pupper_2_bsp.git
-    sudo cp /tmp/mini_pupper_2_bsp/IO_Configuration/config.txt /boot/firmware/config.txt
 fi
 
 # Install Mini Pupper ROS BSP
