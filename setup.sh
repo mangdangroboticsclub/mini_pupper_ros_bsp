@@ -18,7 +18,7 @@ then
 fi
 
 cd ~
-if [ ! -d ~/mini_pupper_ros_bsp ]
+if [ ! -d ~/mini_pupper_bsp ]
 then
 [[ "$1" == "v1" ]] && git clone https://github.com/mangdangroboticsclub/mini_pupper_bsp.git mini_pupper_bsp
 [[ "$1" == "v2" ]] && git clone https://github.com/mangdangroboticsclub/mini_pupper_2_bsp.git mini_pupper_bsp

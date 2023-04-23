@@ -104,7 +104,7 @@ chpasswd:
 packages:
 - git
 runcmd:
-- [ su, ubuntu, -c, "git clone -b for_review https://github.com/hdumcke/mini_pupper_ros_bsp.git /home/ubuntu/mini_pupper_ros_bsp" ]
+- [ su, ubuntu, -c, "git clone https://github.com/mangdangroboticsclub/mini_pupper_ros_bsp.git /home/ubuntu/mini_pupper_ros_bsp" ]
 - [ su, ubuntu, -c, "/home/ubuntu/mini_pupper_ros_bsp/%s %s 2> /home/ubuntu/.setup_err.log > /home/ubuntu/.setup_out.log" ]
 - [ reboot ]
 """
