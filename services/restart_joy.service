@@ -1,0 +1,11 @@
+[Unit]
+Description=Joystick restart service
+Requires=joy_node.service
+After=joy_node.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/bash /home/ubuntu/mini_pupper_ros_bsp/services/restart_joy.sh
+
+[Install]
+WantedBy=multi-user.target
