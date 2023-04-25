@@ -13,6 +13,9 @@ fi
 ### Get directory where this script is installed
 BASEDIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+### Append to release file
+echo ROSBSP_VERSION=\"$(cd ~/mini_pupper_ros_bsp; ~/mini_pupper_bsp/get-version.sh)\" >> ~/mini-pupper-release
+
 ### Install ROS2
 cd ~
 git clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git
