@@ -45,6 +45,11 @@ sudo ln -s $(realpath .)/joystick.service /etc/systemd/system/
 sudo ln -s $(realpath .)/joy_node.service /etc/systemd/system/
 sudo ln -s $(realpath .)/restart_joy.service /etc/systemd/system/
 
+# Install robot service
+# IMU and Lidar depnd on it
+cd ~/mini_pupper_ros_bsp/services
+sudo ln -s $(realpath .)/robot.service /etc/systemd/system/
+
 # Install Lidar
 source /opt/ros/humble/setup.bash
 mkdir -p ~/ros_ws/src
@@ -83,6 +88,7 @@ echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc
 
 # enable services
 sudo systemctl daemon-reload
+sudo systemctl enable robot
 sudo systemctl enable servo_interface
 sudo systemctl enable display_interface
 sudo systemctl enable joystick

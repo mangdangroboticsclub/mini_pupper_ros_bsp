@@ -1,7 +1,7 @@
 [Unit]
 Description=Lidar service
-Requires=robot-ros.service
-After=robot-ros.service
+Requires=robot.service
+After=robot.service
 
 [Service]
 User=ubuntu

@@ -17,14 +17,13 @@
 # limitations under the License.
 # @Author  : Yunlong Feng
 
-from PIL import Image as Img
+import PIL
 import rclpy
 from rclpy.node import Node
 import cv2
-import tempfile
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
-from MangDang.mini_pupper.display import Display
+from MangDang.LCD.ST7789 import ST7789
 
 
 class DisplayNode(Node):
@@ -32,20 +31,17 @@ class DisplayNode(Node):
         super().__init__('display_interface')
         self.get_logger().info("Initializing display interface")
         self.bridge = CvBridge()
-        self.disp = Display()
-        self.disp.show_ip()
-        self.sub = self.create_subscription(
-            Image,
-            'mini_pupper_lcd/image_raw',
-            self.callback,
-            10)
+        self.sub = self.create_subscription(Image, 'mini_pupper_lcd/image_raw')
+        self.get_logger().info("Creating LCD hardware interface")
+        self.disp = ST7789()
+        self.disp.begin()
+        self.disp.clear()
 
     def callback(self, msg):
         cv_img = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
-        image = Img.fromarray(cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB))
-        with tempfile.NamedTemporaryFile() as temp:
-            image.save(temp.name + '.png')
-            self.disp.show_image(temp.name + '.png')
+        image = PIL.Image.fromarray(cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB))
+        resized = image.resize((320, 240))
+        self.disp.display(resized)
 
 
 def main(args=None):

@@ -25,28 +25,24 @@ then
 fi
 
 # Install Mini Pupper BSP
-MACHINE=$(uname -m)
-if [ "$MACHINE" == "x86_64" ]
-then
-    # We are installing in a virtual machine
-    sudo apt-get update
-    sudo apt-get -y install python3 python3-pip python-is-python3 python3-venv python3-virtualenv
-    if [ "$IS_RELEASE" == "Yes" ]
-    then
-        sudo PBR_VERSION=$(cd ~/mini_pupper_bsp; ./get-version.sh) pip install ~/mini_pupper_bsp/mock_api
-    else
-        sudo pip install ~/mini_pupper_bsp/mock_api
-    fi
-else
-    if [ "$IS_RELEASE" != "Yes" ]
-    then
-        sed -i "s/PBR_VERSION/PBR_IGNORE/" ~/mini_pupper_bsp/install.sh
-    fi
-    ~/mini_pupper_bsp/install.sh
-fi
+~/mini_pupper_bsp/install.sh
 
 # Install Mini Pupper ROS BSP
 ~/mini_pupper_ros_bsp/install.sh $1
 
 echo "setup.sh finished at $(date)"
-sudo reboot
+source  ~/mini-pupper-release
+if [ "$MACHINE" == "x86_64" ]
+then
+    sudo systemctl start robot
+    sudo systemctl start servo_interface
+    sudo systemctl start display_interface
+    sudo systemctl start joystick
+    sudo systemctl start joy_node
+    sudo systemctl start restart_joy
+    sudo systemctl start lidar
+    sudo systemctl start imu
+    sudo systemctl start v4l2_camera
+else
+    sudo reboot
+fi

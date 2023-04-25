@@ -61,7 +61,7 @@ You should see the followig list:
 /tf_static
 ```
 
-## Echo ROS Topics that are Produces
+## Echo ROS Topics that are Produced
 
 For each topic that generates output echo the topic
 
@@ -112,3 +112,13 @@ Run the following command on your PC and select topic /image_raw
 ```sh
 ros2 run rqt_image_view rqt_image_view
 ```
+
+To display the video stream on the LDC use the following commands on mini pupper:
+
+```sh
+sudo systemctl stop display_interface
+source ~/ros_ws/install/setup.bash
+ros2 run mini_pupper_driver display_interface --ros-args --remap /mini_pupper_lcd/image_raw:=/image_raw
+```
+
+** This test does not work as expected. LCD updayed is too slow **
