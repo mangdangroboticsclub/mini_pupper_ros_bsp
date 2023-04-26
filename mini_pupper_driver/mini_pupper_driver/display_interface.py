@@ -29,20 +29,20 @@ from MangDang.mini_pupper.display import Display
 
 class DisplayNode(Node):
     def __init__(self):
-        ####### display driver only shows IP address for now
-        ####### needs a real fix
+        # ###### display driver only shows IP address for now
+        # ###### needs a real fix
         super().__init__('display_interface')
         self.disp = Display()
         self.disp.show_ip()
         self.get_logger().info("Initializing display interface")
         self.bridge = CvBridge()
-        #self.sub = self.create_subscription(Image,
-        #                                    'mini_pupper_lcd/image_raw',
-        #                                    self.callback,
-        #                                    10)
+        # self.sub = self.create_subscription(Image,
+        #                                     'mini_pupper_lcd/image_raw',
+        #                                     self.callback,
+        #                                     10)
         self.get_logger().info("Creating LCD hardware interface")
-        #self.disp = ST7789()
-        #self.disp.begin()
+        # self.disp = ST7789()
+        # self.disp.begin()
 
     def callback(self, msg):
         cv_img = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
