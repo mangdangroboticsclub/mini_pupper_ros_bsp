@@ -13,6 +13,9 @@ fi
 ### Get directory where this script is installed
 BASEDIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+### Append to release file
+echo ROSBSP_VERSION=\"$(cd ~/mini_pupper_ros_bsp; ~/mini_pupper_bsp/get-version.sh)\" >> ~/mini-pupper-release
+
 ### Install ROS2
 cd ~
 git clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git
@@ -44,6 +47,11 @@ cd ~/mini_pupper_ros_bsp/services
 sudo ln -s $(realpath .)/joystick.service /etc/systemd/system/
 sudo ln -s $(realpath .)/joy_node.service /etc/systemd/system/
 sudo ln -s $(realpath .)/restart_joy.service /etc/systemd/system/
+
+# Install robot service
+# IMU and Lidar depnd on it
+cd ~/mini_pupper_ros_bsp/services
+sudo ln -s $(realpath .)/robot.service /etc/systemd/system/
 
 # Install Lidar
 source /opt/ros/humble/setup.bash
@@ -83,6 +91,7 @@ echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc
 
 # enable services
 sudo systemctl daemon-reload
+sudo systemctl enable robot
 sudo systemctl enable servo_interface
 sudo systemctl enable display_interface
 sudo systemctl enable joystick
