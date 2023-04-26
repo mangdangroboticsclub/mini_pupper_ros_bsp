@@ -5,6 +5,7 @@
 To test if all services are running issue the following connads:
 
 ```sh
+sudo systemctl status robot
 sudo systemctl status imu
 sudo systemctl status joy_node
 sudo systemctl status lidar
