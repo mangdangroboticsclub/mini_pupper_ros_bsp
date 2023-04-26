@@ -24,14 +24,20 @@ import cv2
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 from MangDang.LCD.ST7789 import ST7789
+from MangDang.mini_pupper.display import Display
 
 
 class DisplayNode(Node):
     def __init__(self):
         super().__init__('display_interface')
+        self.disp = Display()
+        self.disp.show_ip()
         self.get_logger().info("Initializing display interface")
         self.bridge = CvBridge()
-        self.sub = self.create_subscription(Image, 'mini_pupper_lcd/image_raw')
+        self.sub = self.create_subscription(Image,
+                                            'mini_pupper_lcd/image_raw',
+                                            self.callback,
+                                            10)
         self.get_logger().info("Creating LCD hardware interface")
         self.disp = ST7789()
         self.disp.begin()

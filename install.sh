@@ -58,7 +58,7 @@ source /opt/ros/humble/setup.bash
 mkdir -p ~/ros_ws/src
 cd ~/ros_ws
 git clone https://github.com/ldrobotSensorTeam/ldlidar_stl_ros2.git src/ldlidar
-colcon build
+colcon build --executor sequential --symlink-install
 cd ~/mini_pupper_ros_bsp/services
 sudo ln -s $(realpath .)/lidar.service /etc/systemd/system/
 
