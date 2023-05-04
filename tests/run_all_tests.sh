@@ -1,11 +1,4 @@
 #!/bin/bash
-sudo systemctl status robot
-sudo systemctl status imu
-sudo systemctl status joy_node
-sudo systemctl status lidar
-sudo systemctl status servo_interface
-sudo systemctl status display_interface
-sudo systemctl status v4l2_camera
 
 source  ~/mini-pupper-release
 if [ "$MACHINE" == "x86_64" ]
