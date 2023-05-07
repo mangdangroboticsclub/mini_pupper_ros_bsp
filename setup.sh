@@ -34,6 +34,14 @@ echo "setup.sh finished at $(date)"
 source  ~/mini-pupper-release
 if [ "$MACHINE" == "x86_64" ]
 then
+    sudo systemctl start rc-local
+if [ "$HARDWARE" == "mini_pupper_2" ]
+then
+    sudo systemctl start esp32-proxy &
+    sudo systemctl start battery_monitor &
+else
+    sudo systemctl start battery_monitor
+fi
     sudo systemctl start robot
     sudo systemctl start servo_interface
     sudo systemctl start display_interface
