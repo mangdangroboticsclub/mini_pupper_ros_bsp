@@ -21,6 +21,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: "github-pr-review"
           flake8_args: "--config .flake8"
+          fail_on_error: "true"
   cpplint:
     runs-on: ubuntu-latest
     steps:
