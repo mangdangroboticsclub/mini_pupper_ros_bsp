@@ -16,6 +16,18 @@ BASEDIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 ### Append to release file
 echo ROSBSP_VERSION=\"$(cd ~/mini_pupper_ros_bsp; ~/mini_pupper_bsp/get-version.sh)\" >> ~/mini-pupper-release
 
+source  ~/mini-pupper-release
+if [ "$IS_RELEASE" == "YES" ]
+then
+    cd $BASEDIR
+    TAG_COMMIT=$(git rev-list --abbrev-commit --tags --max-count=1)
+    TAG=$(git describe --abbrev=0 --tags ${TAG_COMMIT} 2>/dev/null || true)
+    if [ "v$ROSBSP_VERSION" != "$TAG" ]
+    then
+        sed -i "s/IS_RELEASE=YES/IS_RELEASE=NO/" ~/mini-pupper-release
+    fi
+fi
+
 ### Install ROS2
 cd ~
 git clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git
