@@ -19,6 +19,8 @@ echo ROSBSP_VERSION=\"$(cd ~/mini_pupper_ros_bsp; ~/mini_pupper_bsp/get-version.
 ### Install ROS2
 cd ~
 git clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git
+### workarond, remove when upstream is fixed
+sed -i "s/sudo curl -sSL/sudo curl --insecure -sSL/" ./ros2_setup_scripts_ubuntu/*.sh
 ./ros2_setup_scripts_ubuntu/run.sh
 
 source /opt/ros/humble/setup.bash
