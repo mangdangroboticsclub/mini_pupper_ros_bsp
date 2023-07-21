@@ -1,7 +1,5 @@
 #!/usr/bin/python
 import rclpy
-from ros2node.api import get_node_names
-from ros2topic.api import get_topic_names
 
 expected = ["/camera_info",
             "/image_raw",
