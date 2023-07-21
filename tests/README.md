@@ -91,8 +91,6 @@ source install/setup.bash
 ros2 run test_api test_servos
 ```
 
-TODO
-
 ## Test LCD
 
 To test the display driver:
@@ -104,7 +102,7 @@ source install/setup.bash
 ros2 run test_api test_display
 ```
 
-The LCD display should show a dog.
+The LCD display should show blinking eyes for 2 seconds.
 
 ## Test Video Stream
 

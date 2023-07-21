@@ -1,4 +1,5 @@
 import cv2
+import time
 
 import rclpy
 from rclpy.node import Node
@@ -14,12 +15,19 @@ class OpenCVDemo(Node):
         self.pub_img = self.create_publisher(Image,
                                              "/mini_pupper_lcd/image_raw", 10)
 
-        cv_img = cv2.imread('/home/ubuntu/mini_pupper_ros_bsp/tests/test.png', 0)
-        self.cvb = CvBridge()
-        out_msg = self.cvb.cv2_to_imgmsg(cv_img)
-        out_msg.header.frame_id = 'test_image'
-        out_msg.encoding = 'bgr8'
-        self.pub_img.publish(out_msg)
+        test_images = ["/var/lib/mini_pupper_bsp/trot.png",
+                       "/var/lib/mini_pupper_bsp/rest.png"]
+
+        for i in range(20):
+            cv_img = cv2.imread(test_images[i%2], 0)
+            self.cvb = CvBridge()
+            out_msg = self.cvb.cv2_to_imgmsg(cv_img)
+            out_msg.header.frame_id = 'test_image'
+            out_msg.encoding = 'bgr8'
+            self.pub_img.publish(out_msg)
+            time.sleep(0.1)
+
+        quit()
 
 
 def main(args=None):
