@@ -8,6 +8,7 @@ from sensor_msgs.msg import Image
 
 from cv_bridge import CvBridge
 
+
 class OpenCVDemo(Node):
 
     def __init__(self):
@@ -19,7 +20,7 @@ class OpenCVDemo(Node):
                        "/var/lib/mini_pupper_bsp/rest.png"]
 
         for i in range(20):
-            cv_img = cv2.imread(test_images[i%2], 0)
+            cv_img = cv2.imread(test_images[i % 2], 0)
             self.cvb = CvBridge()
             out_msg = self.cvb.cv2_to_imgmsg(cv_img)
             out_msg.header.frame_id = 'test_image'
