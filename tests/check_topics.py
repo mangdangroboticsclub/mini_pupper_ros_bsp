@@ -1,21 +1,31 @@
 #!/usr/bin/python
 import rclpy
+from MangDang.mini_pupper.capabilities import Capabilities
 
-expected = ["/camera_info",
-            "/image_raw",
-            "/image_raw/compressed",
-            "/image_raw/compressedDepth",
-            "/image_raw/theora",
-            "/mini_pupper_lcd/image_raw",
-            "/imu/data",
-            "/imu/data_raw",
-            "/joint_group_effort_controller/joint_trajectory",
-            "/joy",
-            "/joy/set_feedback",
-            "/parameter_events",
-            "/rosout",
-            "/tf",
-            "/tf_static"]
+expected_v1 = ["/camera_info",
+               "/image_raw",
+               "/image_raw/compressed",
+               "/image_raw/compressedDepth",
+               "/image_raw/theora",
+               "/mini_pupper_lcd/image_raw",
+               "/joint_group_effort_controller/joint_trajectory",
+               "/joy",
+               "/joy/set_feedback",
+               "/parameter_events",
+               "/rosout",
+               "/tf_static"]
+
+expected_v2 = ["/tf",
+               "/imu/data",
+               "/imu/data_raw"]
+
+mp = Capabilities()
+hw = mp.get_capability('version')
+
+if hw == 'mini_pupper':
+    expected = expected_v1
+else:
+    expected = expected_v1 + expected_v2
 
 rclpy.init()
 node = rclpy.create_node("list_elements")
