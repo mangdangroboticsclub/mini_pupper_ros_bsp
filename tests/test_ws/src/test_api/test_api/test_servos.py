@@ -12,8 +12,8 @@ class ServoTest(Node):
                                          "/joint_group_effort_controller/joint_trajectory",
                                          10)
         self.dt = 0.05  # 20 Hz
-        self.neutral_position = [[-0.00713329,  0.00713329, -0.00713329,  0.00713329],
-                                 [ 0.99422964,  0.99422964,  0.99422964,  0.99422964],
+        self.neutral_position = [[-0.00713329, 0.00713329, -0.00713329, 0.00713329],
+                                 [0.99422964, 0.99422964, 0.99422964, 0.99422964],
                                  [-0.77346141, -0.77346141, -0.77346141, -0.77346141]]
         self.ticks = 0
         self.max_ticks = 20
@@ -27,8 +27,8 @@ class ServoTest(Node):
         for j in range(4):
             for i in range(3):
                 pos = self.neutral_position[i][j]
-                #if i == 2:
-                #    pos += deviation
+                if i == 2:
+                    pos += deviation
                 positions.append(pos)
         self.ticks += self.direction
         if self.ticks == self.max_ticks:
