@@ -82,13 +82,6 @@ sudo ln -s $(realpath .)/imu.service /etc/systemd/system/
 sudo apt install -y ros-humble-imu-tools
 fi
 
-# Install Camera
-MACHINE=$(uname -m)
-if [ "$MACHINE" != "x86_64" ]
-# install script will break virtual installation
-then
-~/mini_pupper_bsp/RPiCamera/install.sh
-fi
 cd ~/mini_pupper_ros_bsp/services
 sudo ln -s $(realpath .)/v4l2_camera.service /etc/systemd/system/
 sudo apt install -y ros-humble-v4l2-camera ros-humble-image-transport-plugins
